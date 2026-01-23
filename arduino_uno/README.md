@@ -35,6 +35,8 @@ arduino_uno/
 
 All devices should communicate with Home Assistant using MQTT protocol.
 
+**Note**: Arduino Uno requires additional networking hardware (e.g., Ethernet Shield, WiFi Shield, or ESP8266/ESP32 module) to connect to the network and communicate via MQTT.
+
 ## Requirements
 
 - Arduino IDE or PlatformIO

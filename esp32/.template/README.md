@@ -133,10 +133,10 @@ Receives commands from Home Assistant.
 ## Troubleshooting
 
 ### Device won't connect to WiFi
-- Ensure WiFi is 2.4GHz (ESP32 doesn't support 5GHz)
 - Check SSID and password
 - Verify signal strength
 - Check serial monitor for connection status
+- Note: Most ESP32 boards support both 2.4GHz and 5GHz WiFi
 
 ### Device won't connect to MQTT
 - Verify broker IP address and port

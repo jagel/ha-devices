@@ -244,7 +244,6 @@ Cargo.lock
 .vscode/c_cpp_properties.json
 .vscode/launch.json
 .platformio
-platformio.ini
 
 # IDE
 .idea/
