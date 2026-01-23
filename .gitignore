@@ -205,3 +205,49 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# C++ / Arduino
+*.o
+*.obj
+*.exe
+*.out
+*.app
+*.elf
+*.hex
+*.bin
+*.map
+*.i*86
+*.x86_64
+*.a
+*.lib
+*.dll
+*.dylib
+*.suo
+*.user
+*.sln.docstates
+Debug/
+Release/
+x64/
+x86/
+[Bb]in/
+[Oo]bj/
+
+# Rust
+target/
+Cargo.lock
+**/*.rs.bk
+*.pdb
+
+# Arduino
+.pio/
+.vscode/.browse.c_cpp.db*
+.vscode/c_cpp_properties.json
+.vscode/launch.json
+.platformio
+
+# IDE
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
