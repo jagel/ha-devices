@@ -1,0 +1,16 @@
+{
+  "mqtt": {
+    "broker": "jagel-pi",
+    "username": "jgluser",
+    "password": "5He0AnAlTeX",
+    "port": 1883,
+    "keepalive": 60
+  },
+  "device": {
+    "version": "1",
+    "id": "genie_garage_opener"
+  },
+  "gpio": {
+    "garage_door_pin": 17
+  }
+}
