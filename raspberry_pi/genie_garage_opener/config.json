@@ -1,8 +1,8 @@
 {
   "mqtt": {
     "broker": "jagel-pi",
-    "username": "jgluser",
-    "password": "5He0AnAlTeX",
+    "username": "<mqtt-username>",
+    "password": "<mqtt-password>",
     "port": 1883,
     "keepalive": 60
   },
