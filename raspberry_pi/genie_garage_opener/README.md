@@ -1,29 +1,26 @@
 # Device Name Template
 
 ## Description
-Garage opener device.
+Garage opener device. Compatible with Genie Series II Wall Push Console Button 34299R
 
 ## Hardware Requirements
-- List all components needed
-- Include model numbers if applicable
 
 Example:
 - 1x Raspberry Pi 5
-- 1x DHT22 Temperature/Humidity Sensor
-- Jumper wires
-- Power supply
+- 1x Relay module 1 channel
 
 ## Wiring Diagram
 
 ```
-Raspberry Pi    DHT22
+Raspberry Pi    
 ------------    -----
-3.3V       -->  VCC
+5V         -->  VCC
 GND        -->  GND
-GPIO 4     -->  DATA
+GPIO 7     -->  RELAY IN
 ```
 
-(Include a GPIO pinout diagram)
+![Alt text](./diagram.png)
+
 
 ## Software Dependencies
 
@@ -31,23 +28,9 @@ GPIO 4     -->  DATA
 Create a `requirements.txt` file:
 ```
 paho-mqtt>=1.6.0
-Adafruit-DHT>=1.4.0
-PyYAML>=5.4
+python
 ```
 
-### Rust
-Create a `Cargo.toml` file:
-```toml
-[package]
-name = "device_name"
-version = "0.1.0"
-edition = "2021"
-
-[dependencies]
-paho-mqtt = "0.12"
-serde = { version = "1.0", features = ["derive"] }
-serde_json = "1.0"
-```
 
 ## Installation
 
@@ -57,7 +40,7 @@ Step-by-step instructions for connecting components to the Raspberry Pi.
 ### 2. Software Setup (Python)
 ```bash
 # Clone or copy this directory to your Raspberry Pi
-cd raspberry_pi/device_name
+cd raspberry_pi/genie_garage_opener
 
 # Create virtual environment
 python3 -m venv venv
@@ -67,11 +50,11 @@ source venv/bin/activate
 pip install -r requirements.txt
 
 # Configure settings
-cp config.example.yaml config.yaml
+# cp config.example.yaml config.yaml
 # Edit config.yaml with your settings
 
 # Run the device
-python3 src/main.py
+python3 main.py
 ```
 
 ### 3. Run as Service (Optional)
