@@ -7,7 +7,7 @@ from gpiozero import DigitalOutputDevice
 import time
 
 
-class GenieGarageDevice:
+class Genie_Garage_Device:
     def __init__(self, giopin: DigitalOutputDevice):
         self.pin = giopin
         self.output_def = "Garage Door Opener"

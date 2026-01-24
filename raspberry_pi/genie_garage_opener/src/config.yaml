@@ -1,0 +1,14 @@
+
+mqtt: 
+  broker: !ENV ${mqtt_broker}
+  username: !ENV ${mqtt_username}
+  password: !ENV ${mqtt_password}
+  port: 1883
+  keepalive: 60
+
+device: 
+  version: 1
+  id: genie_garage_opener
+
+gpio: 
+  garage_door_pin: 17

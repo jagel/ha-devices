@@ -4,15 +4,15 @@ MQTT Garage opener
 """
 
 import paho.mqtt.client as mqtt
-from genie_wall_console_lib import GenieGarageDevice
-from ha_mqqt_setup_lib import HA_MQTT_Config, JsonConfigLoader, JsonConfig
+from genie_wall_console_lib import Genie_Garage_Device
+from ha_mqqt_setup_lib import HA_MQTT_Config, Device_Config, YamlConfigLoader
 
 # Configuration
-config = JsonConfigLoader()
-device = JsonConfig(config)
+config = YamlConfigLoader()
+device = Device_Config(config)
 
 # Initialization
-genie_garage = GenieGarageDevice(device.garage_door_pin)
+genie_garage = Genie_Garage_Device(device.garage_door_pin)
 genie_garage.initialize_GPIO()
 
 ha_mqtt = HA_MQTT_Config(device.id,device.version)

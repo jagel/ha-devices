@@ -3,8 +3,64 @@
 Home assitant and MQTT Configuration
 """
 
-import json
 import os
+import json
+from pyaml_env import parse_config
+from dotenv import load_dotenv
+
+class YamlConfigLoader:
+    """
+    Load configuration from YAML file
+    """
+    def __init__(self, config_file='./config.yaml'):
+        self.config_file = config_file
+        self.config = None
+        # Load environment variables from .env file
+        env_path = os.path.join(os.path.dirname(__file__), '.env')
+        load_dotenv(env_path)
+
+    def load_config(self):
+        """
+        Load configuration from YAML file
+        
+        Args:
+            config_file (str): Name of the config file (defaults to 'config.yaml')
+        
+        Returns:
+            dict: Loaded configuration
+        """
+        if self.config is None:
+            config_path = os.path.join(os.path.dirname(__file__), self.config_file)
+            try:
+                print(f"Loading config from: {config_path}")
+                # parse_config expects a file path, not a file object
+                self.config = parse_config(config_path)
+                print("Config loaded successfully")
+            except FileNotFoundError:
+                print(f"Config file not found: {config_path}")
+                raise
+            except Exception as e:
+                print(f"Error parsing YAML config: {e}")
+                raise
+        return self.config
+
+    def get_value(self, nodename, fieldname):
+        """
+        Get configuration value by nodename and fieldname
+        
+        Args:
+            nodename (str): The top-level node name (e.g., 'mqtt', 'device', 'gpio')
+            fieldname (str): The field name within the node (e.g., 'broker', 'username', 'pin')
+        
+        Returns:
+            The configuration value if found, None if not found
+        """
+        try:
+            config = self.load_config()
+            return config[nodename][fieldname]
+        except KeyError as e:
+            print(f"Configuration key not found: {e}")
+            return None    
 
 # Global config variable to store loaded configuration
 
@@ -46,12 +102,12 @@ class HA_MQTT_Config:
         }
         return json.dumps(discovery_payload)
 
-class JsonConfig:
+class Device_Config:
     """
     Load MQTT configuration from JSON file
     """
-    def __init__(self, ha_mqtt_config: HA_MQTT_Config):
-        self.config_file = ha_mqtt_config
+    def __init__(self, config_file: YamlConfigLoader):
+        self.config_file = config_file
         #mqtt
         self.broker = self.config_file.get_value('mqtt','broker') 
         self.username = self.config_file.get_value('mqtt','username')
@@ -64,54 +120,14 @@ class JsonConfig:
         # gpio
         self.garage_door_pin = self.config_file.get_value('gpio','garage_door_pin')
             
-class JsonConfigLoader:
-    """
-    Load configuration from JSON file
-    """
-    def __init__(self, config_file='config.json'):
-        self.config_file = config_file
-        self.config = None
 
-    def load_config(self):
-        """
-        Load configuration from JSON file
-        
-        Args:
-            config_file (str): Name of the config file (defaults to 'config.json')
-        
-        Returns:
-            dict: Loaded configuration
-        """
-        if self.config is None:
-            config_path = os.path.join(os.path.dirname(__file__), self.config_file)
-            with open(config_path, 'r') as f:
-                _config = json.load(f)
-        return _config
-
-    def get_value(self, nodename, fieldname):
-        """
-        Get configuration value by nodename and fieldname
-        
-        Args:
-            nodename (str): The top-level node name (e.g., 'mqtt', 'device', 'gpio')
-            fieldname (str): The field name within the node (e.g., 'broker', 'username', 'pin')
-        
-        Returns:
-            The configuration value if found, None if not found
-        """
-        config = self.load_config()
-        try:
-            return config[nodename][fieldname]
-        except KeyError as e:
-            print(f"Configuration key not found: {e}")
-            return None    
 
 class JGL_MQTT:
     """
     MQTT Configuration Loader
     """
     def __init__(self, config_file='config.json'):
-        self.config_loader = JsonConfigLoader(config_file)
+        self.config_loader = YamlConfigLoader(config_file)
         self.config = self.config_loader.load_config()
         
     def get_value(self, nodename, fieldname):

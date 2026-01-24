@@ -1,5 +1,16 @@
 # Device Name Template
 
+
+
+Environment 
+
+```bash
+python3 -m venv ~/genie_garage_opener
+```
+```bash
+source ~/genie_garage_opener/bin/activate
+```
+
 ## Description
 Garage opener device. Compatible with Genie Series II Wall Push Console Button 34299R
 
@@ -19,7 +30,7 @@ GND        -->  GND
 GPIO 7     -->  RELAY IN
 ```
 
-![Alt text](./diagram.png)
+![Alt text](./docs/diagram.png)
 
 
 ## Software Dependencies
@@ -36,6 +47,15 @@ python
 
 ### 1. Hardware Setup
 Step-by-step instructions for connecting components to the Raspberry Pi.
+
+### 2. Create .env file
+
+```
+# .env
+mqtt_broker=<your-mqtt_broker>
+mqtt_username=<your-mqtt_username>
+mqtt_password=<your-mqtt_password>
+```
 
 ### 2. Software Setup (Python)
 ```bash
