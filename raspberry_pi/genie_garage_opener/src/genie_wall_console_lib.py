@@ -18,6 +18,7 @@ class Genie_Garage_Device:
         # Try to initialize GPIO, fallback to simulation if not on Pi
         try:
             from gpiozero import LED
+            print(f"Setting {self.pin} GPIO as output for Garage Opener...")
             self.led = LED(self.pin)
             self.SIMULATION_MODE = False
             print("Garage Opener GPIO initialized successfully")
