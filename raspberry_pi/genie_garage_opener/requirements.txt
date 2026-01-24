@@ -1,0 +1,1 @@
+paho-mqtt RPi.GPIO gpiozero pyaml-env python-dotenv lgpio
