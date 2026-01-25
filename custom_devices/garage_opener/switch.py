@@ -27,12 +27,15 @@ async def async_setup_platform(
     discovery_info: Optional[DiscoveryInfoType] = None,
 ) -> None:
     """Set up the Momentary Garage Switch platform."""
-    if DOMAIN not in hass.data:
-        _LOGGER.error("Momentary Garage Switch not configured")
+    # Get configuration from hass.data with a default empty list
+    switch_configs = hass.data.get(DOMAIN, [])
+    
+    if not switch_configs:
+        _LOGGER.debug("No Momentary Garage Switch configurations found")
         return
 
     switches = []
-    for switch_config in hass.data[DOMAIN]:
+    for switch_config in switch_configs:
         switches.append(MomentaryGarageSwitch(hass, switch_config))
 
     async_add_entities(switches, True)

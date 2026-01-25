@@ -23,6 +23,8 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
     hass.data[DOMAIN] = config[DOMAIN]
 
     # Load the switch platform
+    # Note: Using async_load_platform for YAML-configured integrations.
+    # For config entry-based integrations, use async_forward_entry_setups instead.
     await hass.helpers.discovery.async_load_platform("switch", DOMAIN, {}, config)
 
     return True
