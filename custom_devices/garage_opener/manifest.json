@@ -1,0 +1,10 @@
+{
+  "domain": "momentary_garage_switch",
+  "name": "Momentary Garage Switch",
+  "documentation": "https://github.com/jagel/ha-devices",
+  "requirements": [],
+  "dependencies": [],
+  "codeowners": ["@jagel"],
+  "version": "1.0.0",
+  "iot_class": "local_polling"
+}
