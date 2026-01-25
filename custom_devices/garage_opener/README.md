@@ -14,11 +14,14 @@ A production-ready, reusable Home Assistant custom integration for controlling g
 
 ## Installation
 
+> **Note**: This integration is located in the `custom_devices/garage_opener/` directory of this repository. When installing to Home Assistant, it should be placed in the `custom_components/momentary_garage_switch/` directory.
+
 ### Method 1: Manual Installation
 
-1. Copy the entire `garage_opener` folder to your Home Assistant custom components directory:
+1. Copy the entire contents of the `garage_opener` folder to your Home Assistant custom components directory:
    ```bash
-   /config/custom_components/momentary_garage_switch/
+   # Source (in this repo): custom_devices/garage_opener/
+   # Destination (in Home Assistant): /config/custom_components/momentary_garage_switch/
    ```
 
 2. Your directory structure should look like:
