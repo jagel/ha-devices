@@ -3,9 +3,12 @@ import logging
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.typing import ConfigType
 
-from .const import DOMAIN
+from .const import DOMAIN, CONFIG_SCHEMA
 
 _LOGGER = logging.getLogger(__name__)
+
+# Expose CONFIG_SCHEMA for Home Assistant to validate configuration
+CONFIG_SCHEMA = CONFIG_SCHEMA  # noqa: F811
 
 
 async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
@@ -15,6 +18,7 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
 
     _LOGGER.debug("Setting up Momentary Garage Switch integration")
 
+    # Configuration is already validated by Home Assistant using CONFIG_SCHEMA
     # Store configuration in hass.data
     hass.data[DOMAIN] = config[DOMAIN]
 

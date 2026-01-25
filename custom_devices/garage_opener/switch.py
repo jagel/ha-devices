@@ -136,9 +136,11 @@ class MomentaryGarageSwitch(SwitchEntity):
         }
 
     @property
-    def device_class(self) -> str:
+    def device_class(self) -> Optional[str]:
         """Return the device class of the switch."""
-        return "switch"
+        # Return None for default switch behavior
+        # Garage door switches don't have a specific device class
+        return None
 
     @property
     def icon(self) -> str:
