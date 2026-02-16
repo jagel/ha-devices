@@ -1,0 +1,29 @@
+# Example configuration.yaml for Momentary Garage Switch Integration
+
+# Single garage door example
+jgl_garage_switch:
+  - name: "Garage Opener"
+    trigger_switch: switch.genie_garage_opener
+    state_sensor: binary_sensor.0x001_contact
+
+# Multiple garage doors example
+# jgl_garage_switch:
+#   - name: "Main Garage"
+#     trigger_switch: switch.main_garage_opener
+#     state_sensor: binary_sensor.main_garage_contact
+#   
+#   - name: "Side Garage"
+#     trigger_switch: switch.side_garage_opener
+#     state_sensor: binary_sensor.side_garage_contact
+
+# Example with test inputs (for testing without real hardware)
+# input_boolean:
+#   test_trigger:
+#     name: Test Trigger Switch
+#   test_sensor:
+#     name: Test Sensor
+# 
+# jgl_garage_switch:
+#   - name: "Test Garage"
+#     trigger_switch: input_boolean.test_trigger
+#     state_sensor: input_boolean.test_sensor
