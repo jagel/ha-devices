@@ -11,7 +11,7 @@ class Genie_Garage_Device:
     def __init__(self, giopin: DigitalOutputDevice):
         self.pin = giopin
         self.output_def = "Garage Door Opener"
-        self.delay = 2  # seconds
+        self.delay = 1  # seconds
         self.current_state = "OFF"
 
     def initialize_GPIO(self):
@@ -19,7 +19,7 @@ class Genie_Garage_Device:
         try:
             from gpiozero import LED
             print(f"Setting {self.pin} GPIO as output for Garage Opener...")
-            self.led = LED(self.pin)
+            self.led = LED(self.pin,active_high= False)
             self.SIMULATION_MODE = False
             print("Garage Opener GPIO initialized successfully")
         except Exception as e:

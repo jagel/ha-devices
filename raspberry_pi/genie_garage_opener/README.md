@@ -187,3 +187,31 @@ sudo usermod -a -G gpio pi
 
 ## License
 MIT License (inherited from repository)
+
+
+
+## Run application 
+
+Execute the following command
+```bash
+nohup python3 /home/jagel/Documents/repos/ha-devices/raspberry_pi/genie_garage_opener/src/main.py > /dev/null 2>&1 &
+```
+
+This will:
+
+- Run the process in the background (&)
+- Ignore hangup signals (nohup)
+- Redirect output to null to avoid log files
+- Continue running even after you close the terminal
+
+To check if it's running:
+
+```bash
+ps aux | grep main.py
+```
+
+To stop the application run the command
+
+```bash
+pkill -f main.py
+```

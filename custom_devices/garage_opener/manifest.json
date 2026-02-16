@@ -1,0 +1,12 @@
+{
+  "domain": "jgl_garage_switch",
+  "name": "HASS Garage Switch",
+  "documentation": "https://github.com/jagel/ha-devices",
+  "requirements": [],
+  "dependencies": [],
+  "codeowners": ["@jagel"],
+  "version": "2.0.0",
+  "iot_class": "local_polling",
+  "config_flow": false,
+  "after_dependencies": ["switch", "binary_sensor"]
+}
